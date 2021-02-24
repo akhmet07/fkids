@@ -23,7 +23,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  uuid: 2.2.2
+  shimmer:
+    git: https://github.com/hnvn/flutter_shimmer
+  flutter_svg: ^0.20.0-nullsafety.3
+  carousel_slider:
+    git: https://github.com/serenader2014/flutter_carousel_slider
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -32,22 +37,30 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  import_sorter: ^4.4.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter.
 flutter:
-
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
   uses-material-design: true
-
-  # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/
+    - assets/fonts/
+    - assets/images/
+    - assets/svg/
+  fonts:
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/montserrat_light.ttf
+          weight: 300
+        - asset: assets/fonts/montserrat_medium.ttf
+          weight: 400
+        - asset: assets/fonts/montserrat_regular.ttf
+          weight: 500
+        - asset: assets/fonts/montserrat_semibold.ttf
+          weight: 600
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

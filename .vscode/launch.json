@@ -1,0 +1,16 @@
+{
+  "configurations": [
+    {
+      "name": "Main Mobile App",
+      "type": "dart",
+      "request": "launch",
+      "program": "lib/main.dart"
+    },
+    {
+      "name": "Todo Mobile App",
+      "type": "dart",
+      "request": "launch",
+      "program": "lib/todo.dart"
+    }
+  ]
+}
