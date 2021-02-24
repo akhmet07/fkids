@@ -12,7 +12,7 @@ List<Map<String, dynamic>> data = [
 void main() {
   print(task1());
 
-  var hero = findUserTask2(data, 'Halk');
+  var hero = findUserTask2(data, 'Halk2');
   print(hero);
 
   SuperMan superMan = SuperMan();
@@ -38,13 +38,14 @@ List task1() {
 ///Первый — массив с героями, второй — имя героя. Эта функция ищет по имени героя в списке
 /// и возвращает нам объект с героем, например {"name": "Batman", "age": 30}.
 /// Если такого имени в списке нет, функция должна вернуть {name: Anonimus, age: 0}.
-String findUserTask2(List<Map<String, dynamic>> data, String s) {
+Map findUserTask2(List<Map<String, dynamic>> data, String s) {
   for (Map map in data) {
     for (MapEntry result in map.entries)
       if (result.value == s)
-        return map.toString();
+        return map;
   }
-  return "{name: Anonimus, age: 0}";
+
+  return {'name': 'Anonimus', 'age': 0};
 }
 
 
