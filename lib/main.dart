@@ -60,6 +60,15 @@ class _MyHomePageState extends State<MyHomePage>
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        actions: [
+          Builder(
+            builder: (context) => IconButton(
+              icon: Icon(Icons.portrait_rounded),
+              onPressed: () => Scaffold.of(context).openEndDrawer(),
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+            ),
+          ),
+        ],
       ),
       drawer: Drawer(
         child: Column(children: <Widget>[
@@ -85,14 +94,66 @@ class _MyHomePageState extends State<MyHomePage>
               print('On Long Press');
             },
           ),
+          ListTile(
+            leading: Icon(Icons.portrait_rounded),
+            trailing: Icon(Icons.arrow_forward),
+            title: Text('Профайл'),
+            onTap: () {
+              print('On Tap profile');
+            },
+            onLongPress: () {
+              print('On Long Press profile');
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.image_sharp),
+            trailing: Icon(Icons.arrow_forward),
+            title: Text('Изображения'),
+            onTap: () {
+              print('On Tap images');
+            },
+            onLongPress: () {
+              print('On Long Press images');
+            },
+          ),
+          Container(
+            height: 400,
+            //TODO: как тут растянуть по всей высоте? double.infinity - не работает!
+            alignment: Alignment.bottomCenter,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(onPressed: () {}, child: Text('Выход')),
+                ElevatedButton(onPressed: () {}, child: Text('Регистрация')),
+              ],
+            ),
+          ),
         ]),
+      ),
+      endDrawer: Drawer(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                  radius: 60,
+                  backgroundColor: Colors.red,
+                  backgroundImage:
+                      NetworkImage('https://picsum.photos/200/300')),
+              Padding(
+                padding: EdgeInsets.all(20.0),
+                child: Text('Akhmet Sulemenov'),
+              )
+            ],
+          ),
+        ),
       ),
       body: TabBarView(
         controller: _tabController,
         children: <Widget>[
           Container(
             color: Colors.green,
-            child: Center(child: _isPaid ? Text('Заказ оплачен'): null),
+            child: Center(child: _isPaid ? Text('Заказ оплачен') : null),
           ),
           Container(
             color: Colors.red,
@@ -133,13 +194,14 @@ class _MyHomePageState extends State<MyHomePage>
                         title: Text('Сумма'),
                         trailing: Text('200 тенге'),
                       ),
-                      ElevatedButton(onPressed: () {
-                        setState(() {
-                          _isPaid = true;
-                        });
-                        Navigator.of(context).pop();
-                      },
-                      child: Text('Оплатить'))
+                      ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              _isPaid = true;
+                            });
+                            Navigator.of(context).pop();
+                          },
+                          child: Text('Оплатить'))
                     ],
                   ),
                 );
