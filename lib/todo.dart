@@ -1,4 +1,6 @@
 // Flutter imports:
+import 'package:fkids/home_view.dart';
+import 'package:fkids/user_card.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -59,11 +61,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _incrementCounter() {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
       _counter++;
     });
   }
@@ -103,6 +100,9 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            HomeView(
+              counter: _counter,
+            ),
             SizedBox(
               width: 200.0,
               height: 100.0,
@@ -123,12 +123,12 @@ class _MyHomePageState extends State<MyHomePage> {
               '${uuid.v4()}',
               style: TextStyle(fontFamily: 'Montserrat', fontSize: 18),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+            UserCard(name: 'Anna', age: '20'),
+            UserCard(name: 'Jack', age: '10'),
             //Image.asset('assets/images/tjusig_hanger.jpg')
-            Image.network('https://picsum.photos/200/300')
+            Image.network('https://picsum.photos/200/300'),
+            ElevatedButton(
+                child: Text('Test ${_counter}'), onPressed: _incrementCounter)
           ],
         ),
       ),
