@@ -116,9 +116,8 @@ class _MyHomePageState extends State<MyHomePage>
               print('On Long Press images');
             },
           ),
-          Container(
-            height: 400,
-            //TODO: как тут растянуть по всей высоте? double.infinity - не работает!
+          Expanded(
+              child: Container(
             alignment: Alignment.bottomCenter,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -127,7 +126,7 @@ class _MyHomePageState extends State<MyHomePage>
                 ElevatedButton(onPressed: () {}, child: Text('Регистрация')),
               ],
             ),
-          ),
+          )),
         ]),
       ),
       endDrawer: Drawer(
